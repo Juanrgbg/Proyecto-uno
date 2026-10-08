@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Movement;
 use App\Models\Product;
 use App\Notifications\StockProduct;
+use Barryvdh\DomPDF\facade\PDF;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -116,4 +117,17 @@ class MovementController extends Controller
             ->notify(new StockProduct($product));
         }
     }
+
+    public function pdf($id){
+        $movement = Movement::find($id);
+        $pdf_movement = PDF::loadview('movements.pdf', compact('movement'));
+        return $pdf_movement->stream('movement' .$movement->id.'pdf');
+    }
+
+    public function pdfall(){
+        $movements = Movement::all();
+        $pdf_general = PDF::loadView('movements.pdfall', compact('movements'));
+        return $pdf_general->stream('movements' .$movements.'pdf');
+    }
+
 }
