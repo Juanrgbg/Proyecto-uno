@@ -18,9 +18,6 @@
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="{{ route('productos.index') }}">Productos</a>
         </li>
         <li class="nav-item">
@@ -30,10 +27,12 @@
           <a class="nav-link" href="{{ route('movimientos.index') }}">Movimientos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Dashboard</a>
+          <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+        </li>
+        <li class="nav-item d-flex ">
+          <a href="" class="nav-link"></a><button type="button" class="btn btn-danger position-fixed mt-3 end-0 translate-middle-y mx-2">Cerrar Sesion</button>
         </li>
       </ul>
-     
     </div>
   </div>
 </nav>
